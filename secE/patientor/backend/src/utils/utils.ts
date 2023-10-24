@@ -53,6 +53,7 @@ const parseGender = (gender: unknown): Gender => {
   return gender;
 }
 
+// added "entries" as part of ex 9.20
 const toNewPatientEntry = (object: unknown): NewPatientEntry => {
   if (!object || typeof object !== 'object') {
     throw new Error('Incorrect or missing data');
