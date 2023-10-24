@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Patient } from '../../types';
 import { useParams } from "react-router-dom";
 import patientService from "../../services/patients";
+import { FemaleRounded, MaleRounded } from '@mui/icons-material';
 
 const PatientInfo = () => {
   const [patient, setPatient] = useState<Patient | null>(null);
@@ -22,11 +23,13 @@ const PatientInfo = () => {
 
     fetchPatient();
   }, [id]);
-  console.log(patient)
 
   return (
     <div>
-      <h2>{patient?.name}</h2>
+      <h2>
+        {patient?.name}
+        {patient?.gender === 'male' ? <MaleRounded /> : <FemaleRounded /> }
+      </h2>
 
       <p>
         <strong>SSN:</strong> {patient?.ssn}
