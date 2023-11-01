@@ -1,7 +1,7 @@
-// part of ex 9.21
+// Updated due to exercise 9.23
 
 import { useState, useEffect } from "react";
-import { Patient } from '../../types';
+import { Patient, Entry } from '../../types';
 import { useParams } from "react-router-dom";
 import patientService from "../../services/patients";
 import { FemaleRounded, MaleRounded } from '@mui/icons-material';
@@ -24,18 +24,50 @@ const PatientInfo = () => {
     fetchPatient();
   }, [id]);
 
+  console.log(patient)
+  
   return (
     <div>
       <h2>
         {patient?.name}
-        {patient?.gender === 'male' ? <MaleRounded /> : <FemaleRounded /> }
+        {patient?.gender === 'male' ? <MaleRounded /> : <FemaleRounded />}
       </h2>
 
-      <p>
-        <strong>SSN:</strong> {patient?.ssn}
-        <br />
-        <strong>Occupation:</strong> {patient?.occupation}
-      </p>
+      <div>
+        <div>
+          <p>
+            <strong>SSN:</strong> {patient?.ssn}
+            <br />
+            <strong>Occupation:</strong> {patient?.occupation}
+          </p>
+        </div>
+        <hr />
+
+        <h3>Entries</h3>
+
+        <div>
+          {
+            patient?.entries.map((entry: Entry) => (
+              <div key={entry.id}>
+                <p>
+                  <strong>{entry.date}: </strong> {entry.description}
+                </p>
+              
+                {
+                  entry.diagnosisCodes?.map((code: string) =>(
+                    <ul key={code}>
+                      <li>{code}</li>
+                    </ul>
+                  ))
+                }
+                
+              </div>
+            ))
+          }
+        </div>
+        
+      </div>
+
     </div>
   )
 }

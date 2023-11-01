@@ -123,7 +123,6 @@ const patientEntries: Patient[] = patients.map(obj => {
   return object;
 });
 
-console.log(patientEntries)
 
 export default patientEntries;
 
