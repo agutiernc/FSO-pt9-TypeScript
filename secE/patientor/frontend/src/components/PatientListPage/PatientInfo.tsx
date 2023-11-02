@@ -1,12 +1,17 @@
 // Updated due to exercise 9.23
 
 import { useState, useEffect } from "react";
-import { Patient, Entry } from '../../types';
+import { Patient, Entry, Diagnosis } from '../../types';
 import { useParams } from "react-router-dom";
 import patientService from "../../services/patients";
 import { FemaleRounded, MaleRounded } from '@mui/icons-material';
 
-const PatientInfo = () => {
+// for ex. 9.24
+interface Props {
+  diagnoses: Diagnosis[];
+}
+
+const PatientInfo = ({ diagnoses }: Props) => {
   const [patient, setPatient] = useState<Patient | null>(null);
   const { id } = useParams<{ id: string }>();
 
@@ -24,7 +29,12 @@ const PatientInfo = () => {
     fetchPatient();
   }, [id]);
 
-  console.log(patient)
+  // added for ex 9.24
+  const getDiagnosisName = (code: string) => {
+    const description = diagnoses.find(d => d.code === code);
+
+    return description ? description.name : '';
+  };
   
   return (
     <div>
@@ -56,7 +66,7 @@ const PatientInfo = () => {
                 {
                   entry.diagnosisCodes?.map((code: string) =>(
                     <ul key={code}>
-                      <li>{code}</li>
+                      <li>{code} - {getDiagnosisName(code)}</li>
                     </ul>
                   ))
                 }
@@ -65,9 +75,7 @@ const PatientInfo = () => {
             ))
           }
         </div>
-        
       </div>
-
     </div>
   )
 }
