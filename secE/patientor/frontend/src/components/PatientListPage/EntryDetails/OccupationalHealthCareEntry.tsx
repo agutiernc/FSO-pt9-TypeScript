@@ -1,3 +1,4 @@
+// Added for ex 9.25
 import { OccupationalHealthcareEntry } from "../../../types";
 import { Box } from "@mui/material";
 import WorkIcon from '@mui/icons-material/Work';
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const OccupationalHealthcareEntryDetails = ({ entry }: Props) => {
-  
+
   return (
     <Box sx={{
       width: 780,

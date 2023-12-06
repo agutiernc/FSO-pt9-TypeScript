@@ -1,20 +1,13 @@
 // Added for ex 9.25
-import { Entry, HealthCheckEntry } from "../../../types";
+import { HealthCheckEntry } from "../../../types";
 import { Box } from "@mui/material";
 import { MedicalInformation, Favorite } from "@mui/icons-material";
 
 interface Props {
-  entry: Entry
+  entry: HealthCheckEntry
 }
 
 const HealthCheckEntryDetails = ({ entry }: Props) => {
-  /**
-   * look into why this had to be imported and used like this
-   * Look @ enum since "entry.healthCheckRating" doesn't work, but 
-   * displays when just printing "entry" to console
-   **/
-  const healthCheckRating = entry as HealthCheckEntry;
-
   const heartColor = (rating: number) => {
     if (rating === 0) {
       return 'red';
@@ -44,7 +37,7 @@ const HealthCheckEntryDetails = ({ entry }: Props) => {
       <em>{entry.description}</em>
       <br />
       {/* could have used "sx" -- just know the difference */}
-      <Favorite style={{ color: heartColor(healthCheckRating.healthCheckRating) }} />
+      <Favorite style={{ color: heartColor(entry.healthCheckRating) }} />
       <br />
       <span style={{ color: "green" }}>Diagnosed by {entry.specialist}</span>
     </Box>
