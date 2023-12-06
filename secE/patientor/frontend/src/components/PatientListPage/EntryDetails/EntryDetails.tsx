@@ -1,8 +1,8 @@
 // Added for ex. 9.25
 import { Entry } from '../../../types';
 import { assertNever } from '../../../utils/utils';
-import HospitalEntry from '../EntryDetails/HospitalEntry';
-import OccupationalHealthcareEntryDetails from './OccupationalHealthCareEntry';
+import HospitalEntry from './HospitalEntryDetails';
+import OccupationalHealthcareEntryDetails from './OccupationalHealthCareEntryDetails';
 import HealthCheckEntryDetails from './HealthCheckEntryDetails';
 
 interface Props {
