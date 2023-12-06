@@ -1,5 +1,10 @@
+import { Entry } from "../../../types";
 
-const OccupationalHealthcareEntry = () => {
+interface Props {
+  entry: Entry
+}
+
+const OccupationalHealthcareEntry = ({ entry }: Props) => {
   return (
     <div>
       <h1>OHE</h1>

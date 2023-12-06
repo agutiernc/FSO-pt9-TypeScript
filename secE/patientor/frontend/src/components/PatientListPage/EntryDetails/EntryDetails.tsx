@@ -3,7 +3,7 @@ import { Entry } from '../../../types';
 import { assertNever } from '../../../utils/utils';
 import HospitalEntry from '../EntryDetails/HospitalEntry';
 import OccupationalHealthcareEntry from './OccupationalHealthCareEntry';
-import HealthCheckEntry from './HealthCheckEntry';
+import HealthCheckEntryDetails from './HealthCheckEntryDetails';
 
 interface Props {
   entry: Entry
@@ -12,11 +12,11 @@ interface Props {
 const EntryDetails = ({ entry }: Props) => {
   switch(entry.type) {
     case "Hospital":
-      return <HospitalEntry />;
+      return <HospitalEntry entry={entry} />;
     case "OccupationalHealthcare":
-      return <OccupationalHealthcareEntry />;
+      return <OccupationalHealthcareEntry entry={entry} />;
     case "HealthCheck":
-      return <HealthCheckEntry />;
+      return <HealthCheckEntryDetails entry={entry} />;
     default:
       return assertNever(entry);
   }

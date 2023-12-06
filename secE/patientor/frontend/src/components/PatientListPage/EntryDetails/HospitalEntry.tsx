@@ -1,5 +1,11 @@
+import { Entry } from "../../../types";
 
-const HospitalEntry = () => {
+interface Props {
+  entry: Entry
+}
+
+const HospitalEntry = ({ entry }: Props) => {
+  console.log('From HE: ', entry)
   return (
     <div>
       <h1>HE</h1>

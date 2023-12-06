@@ -60,10 +60,6 @@ const PatientInfo = ({ diagnoses }: Props) => {
             patient?.entries.map((entry: Entry) => (
               <div key={entry.id}>
                 <EntryDetails entry={entry} />
-                
-                <p>
-                  <strong>{entry.date}: </strong> {entry.description}
-                </p>
               
                 {
                   entry.diagnosisCodes?.map((code: string) =>(
