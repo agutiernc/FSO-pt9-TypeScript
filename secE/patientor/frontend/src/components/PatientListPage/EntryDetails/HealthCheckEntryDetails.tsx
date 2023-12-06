@@ -34,6 +34,8 @@ const HealthCheckEntryDetails = ({ entry }: Props) => {
       border: 1,
       borderColor: 'purple',
       borderRadius: 1.5,
+      marginTop: 1,
+      marginBottom: 1,
       padding: 2,
       lineHeight: 2
     }}>
@@ -44,7 +46,7 @@ const HealthCheckEntryDetails = ({ entry }: Props) => {
       {/* could have used "sx" -- just know the difference */}
       <Favorite style={{ color: heartColor(healthCheckRating.healthCheckRating) }} />
       <br />
-      Diagnosed by {entry.specialist}
+      <span style={{ color: "green" }}>Diagnosed by {entry.specialist}</span>
     </Box>
   );
 };

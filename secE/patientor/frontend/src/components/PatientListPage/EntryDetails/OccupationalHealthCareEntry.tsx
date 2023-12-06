@@ -1,15 +1,34 @@
-import { Entry } from "../../../types";
+import { OccupationalHealthcareEntry } from "../../../types";
+import { Box } from "@mui/material";
+import WorkIcon from '@mui/icons-material/Work';
 
 interface Props {
-  entry: Entry
+  entry: OccupationalHealthcareEntry;
 }
 
-const OccupationalHealthcareEntry = ({ entry }: Props) => {
+const OccupationalHealthcareEntryDetails = ({ entry }: Props) => {
+  
   return (
-    <div>
-      <h1>OHE</h1>
-    </div>
+    <Box sx={{
+      width: 780,
+      height: 'auto',
+      border: 1,
+      borderColor: 'purple',
+      borderRadius: 1.5,
+      padding: 2,
+      marginTop: 1,
+      marginBottom: 1,
+      lineHeight: 2
+    }}>
+      <strong>{entry.date}</strong> <WorkIcon color="info" />
+      <br />
+      Employer: {entry.employerName}
+      <br />
+      Description: {entry.description}
+      <br />
+      <span style={{ color: "green" }}>Diagnosed by {entry.specialist}</span>
+    </Box>
   );
 }
 
-export default OccupationalHealthcareEntry;
+export default OccupationalHealthcareEntryDetails;
