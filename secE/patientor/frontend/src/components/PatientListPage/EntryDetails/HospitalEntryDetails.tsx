@@ -2,6 +2,7 @@
 import { HospitalEntry, Diagnosis } from "../../../types";
 import { Box } from "@mui/material";
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import DiagnosesCodes from "./DiagnosesCodes";
 
 interface Props {
   entry: HospitalEntry;
@@ -9,14 +10,6 @@ interface Props {
 }
 
 const HospitalEntryDetails = ({ entry, diagnoses }: Props) => {
-  console.log('From HE: ', entry)
-
-  const getDiagnosisName = (code: string) => {
-    const description = diagnoses.find(d => d.code === code);
-
-    return description ? description.name : '';
-  };
-
 
   return (
     <Box sx={{
@@ -58,18 +51,10 @@ const HospitalEntryDetails = ({ entry, diagnoses }: Props) => {
           Diagnosis Codes
         </h4>
 
-        {/* Add diagnosis codes here - move code from PatientInfo */}
-
-        {
-          entry.diagnosisCodes?.map((code: string) => (
-            <ul key={code}>
-              <li>{code} - {getDiagnosisName(code)}</li>
-            </ul>
-          ))
-        }
+        <DiagnosesCodes entry={entry} diagnoses={diagnoses} />
       </Box>
     </Box>
   );
-}
+};
 
 export default HospitalEntryDetails;
