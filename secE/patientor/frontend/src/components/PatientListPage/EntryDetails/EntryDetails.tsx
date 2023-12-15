@@ -1,20 +1,21 @@
 // Added for ex. 9.25
-import { Entry } from '../../../types';
+import { Entry, Diagnosis } from '../../../types';
 import { assertNever } from '../../../utils/utils';
-import HospitalEntry from './HospitalEntryDetails';
+import HospitalEntryDetails from './HospitalEntryDetails';
 import OccupationalHealthcareEntryDetails from './OccupationalHealthCareEntryDetails';
 import HealthCheckEntryDetails from './HealthCheckEntryDetails';
 
 interface Props {
-  entry: Entry
+  entry: Entry;
+  diagnoses: Diagnosis[];
 }
 
-const EntryDetails = ({ entry }: Props) => {
+const EntryDetails = ({ entry, diagnoses }: Props) => {
   switch(entry.type) {
     case "Hospital":
-      return <HospitalEntry entry={entry} />;
+      return <HospitalEntryDetails entry={entry} diagnoses={diagnoses} />;
     case "OccupationalHealthcare":
-      return <OccupationalHealthcareEntryDetails entry={entry} />;
+      return <OccupationalHealthcareEntryDetails entry={entry} diagnoses={diagnoses} />;
     case "HealthCheck":
       return <HealthCheckEntryDetails entry={entry} />;
     default:
