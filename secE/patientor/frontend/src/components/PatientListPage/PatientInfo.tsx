@@ -28,13 +28,6 @@ const PatientInfo = ({ diagnoses }: Props) => {
 
     fetchPatient();
   }, [id]);
-
-  // added for ex 9.24
-  // const getDiagnosisName = (code: string) => {
-  //   const description = diagnoses.find(d => d.code === code);
-
-  //   return description ? description.name : '';
-  // };
   
   return (
     <div>
@@ -60,15 +53,6 @@ const PatientInfo = ({ diagnoses }: Props) => {
             patient?.entries.map((entry: Entry) => (
               <div key={entry.id}>
                 <EntryDetails entry={entry} diagnoses={diagnoses} />
-              
-                {/* {
-                  entry.diagnosisCodes?.map((code: string) =>(
-                    <ul key={code}>
-                      <li>{code} - {getDiagnosisName(code)}</li>
-                    </ul>
-                  ))
-                } */}
-                
               </div>
             ))
           }

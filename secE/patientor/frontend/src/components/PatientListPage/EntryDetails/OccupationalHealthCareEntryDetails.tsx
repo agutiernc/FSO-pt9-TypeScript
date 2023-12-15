@@ -32,29 +32,10 @@ const OccupationalHealthcareEntryDetails = ({ entry, diagnoses }: Props) => {
       <span style={{ color: "green" }}>Diagnosed by {entry.specialist}</span>
 
       {entry.diagnosisCodes ? (
-        <Box sx={{
-          width: 550,
-          height: 'auto',
-          border: 1,
-          borderColor: 'blue',
-          borderRadius: 1.5,
-          marginTop: 1,
-          marginBottom: 1,
-          lineHeight: 2
-        }}>
-          <h4 style={{ 
-            marginTop: 0, 
-            marginLeft: 10, 
-            padding: 2
-          }}>
-            Diagnosis Codes
-          </h4>
-
-          <DiagnosesCodes entry={entry} diagnoses={diagnoses} />
-        </Box>
-        ) : (
-          ""
-        )
+        <DiagnosesCodes entry={entry} diagnoses={diagnoses} />
+      ) : (
+        ""
+      )
       }
     </Box>
   );
